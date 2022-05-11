@@ -1,0 +1,67 @@
+GitClone Implementations
+------------------------
+
+Overview:
+This file conatins some utility functions for removeing the
+code duplications from the higher-level APIs.
+
+Commands:
+
+Core_Details_Git_Clone:
+
+    Core_Details_Git_Clone(binary repo tag depth output)
+
+Uses git with provided binary path to clones repo
+at tag by depth of depth in output directory.
+
+- binary
+  Absolute path to the git binary file. Usually 
+  provided by FindGit and GIT_EXECUTABLE variable.
+  
+- repo
+  Repo's ULR to be clone.
+
+- tag
+  A tag, branch or commit hash for cloning.
+
+- depth
+  For performing a shallow clone with depth of commit.
+
+- output
+  Directory in which to clone the repository.
+
+---------------------------------------------------------
+
+Core_Details_Git_Pull:
+
+    Core_Details_Git_Pull(binary output)
+
+Uses git specified by binary to perform a git pull
+on output.
+
+- binary
+  Absolute path to the git binary file. Usually 
+  provided by FindGit and GIT_EXECUTABLE variable.
+  
+- output
+  Directory to execute the pull command on it.
+
+---------------------------------------------------------
+
+Core_Details_Git_Reset:
+
+    Core_Details_Git_Reset(binary output reset_level)
+
+Performs a git reset --<reset_level> at output with
+binary git binary file.
+
+- binary
+  Absolute path to the git binary file. Usually
+  provided by FindGit and GIT_EXECUTABLE variable.
+  
+- output
+  The repository directory
+  
+- reset_level
+  An accepable reset level for git-reset command.
+
