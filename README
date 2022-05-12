@@ -1,0 +1,9 @@
+CMakeCommon
+-----------
+
+Overview:
+  
+  Some useful functions/modules:
+    - Git/: Contains functions for clone, pull, ... git repositories.
+    - Utility/: Useful functions like tools for string manipulations.
+
