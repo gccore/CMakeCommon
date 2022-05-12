@@ -4,9 +4,7 @@ project(CMakeCommon
   DESCRIPTION "Some Creepy Shitty CMake Scripts"
 )
 
-include(Utility/CMakeUtilityFunctions.cmake)
-include(Git/GitClone.cmake)
-include(FetchQMakeContents/FetchQMakeContents.cmake)
+include(CMakeCommon.cmake)
 
 Core_Utility_FetchQMakeContents(
   GIT_REPOSITORY https://github.com/SMR76/knight-pen.git

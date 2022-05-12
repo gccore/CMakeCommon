@@ -14,6 +14,9 @@ function(Core_Utility_FetchQMakeContents)
     OUTPUT_INSTALL_DIRECTORY
 
     QMAKE_CONFIG_DIRECTORY
+
+    RUN_INSTALL_RULE
+    RUN_BUILD_RULE
   )
   set(multi_value_arguments)
   cmake_parse_arguments(FQC
@@ -49,6 +52,10 @@ function(Core_Utility_FetchQMakeContents)
     set(FQC_INSTALL_DIRECTORY ${default_prefix_path}/install)
   endif()
 
+  if(NOT FQC_RUN_BUILD_RULE)
+    set(FQC_RUN_BUILD_RULE true)
+  endif()
+
   file(MAKE_DIRECTORY ${FQC_BUILD_DIRECTORY})
   file(MAKE_DIRECTORY ${FQC_INSTALL_DIRECTORY})
 
@@ -64,9 +71,16 @@ function(Core_Utility_FetchQMakeContents)
     set(FQC_SOURCE_DIRECTORY ${FQC_SOURCE_DIRECTORY}/${FQC_QMAKE_CONFIG_DIRECTORY})
   endif()
 
-  Core_Details_FetchQMakeContents_ConfigureQMake(
-    ${FQC_SOURCE_DIRECTORY} "${FQC_QMAKE_ARGUMENTS}" ${FQC_BUILD_DIRECTORY})
-  Core_Details_FetchQMakeContents_BuildQMake(${FQC_BUILD_DIRECTORY})
-  Core_Details_FetchQMakeContents_InstallQMake(${FQC_BUILD_DIRECTORY})
+  if(${FQC_RUN_BUILD_RULE})
+    Core_Details_FetchQMakeContents_ConfigureQMake(
+      ${FQC_SOURCE_DIRECTORY} "${FQC_QMAKE_ARGUMENTS}" ${FQC_BUILD_DIRECTORY})
+    Core_Details_FetchQMakeContents_BuildQMake(${FQC_BUILD_DIRECTORY})
+  endif()
+
+  if(FQC_RUN_INSTALL_RULE)
+    if(${FQC_RUN_INSTALL_RULE})
+      Core_Details_FetchQMakeContents_InstallQMake(${FQC_BUILD_DIRECTORY})
+    endif()
+  endif()
 
 endfunction()

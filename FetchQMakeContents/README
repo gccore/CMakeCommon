@@ -14,7 +14,8 @@ Files: FetchQMakeContents.cmake
       [GIT_TAG, QMAKE_ARGUMENTS,
        OUTPUT_PREFIX, OUTPUT_BUILD_DIRECTORY,
        OUTPUT_SOURCE_DIRECTORY, OUTPUT_INSTALL_DIRECTORY,
-       QMAKE_CONFIG_DIRECTORY]
+       QMAKE_CONFIG_DIRECTORY, RUN_INSTALL_RULE,
+       RUN_BUILD_RULE]
     )
 
     Takes a GIT repository, clones and build it.
@@ -54,12 +55,16 @@ Files: FetchQMakeContents.cmake
         the repository QMake directory path relative to
         the reposiotry sources.
 
+      - RUN_INSTALL_RULE:
+        Executes make install, default is false.
+
+      - RUN_BUILD_RULE:
+        Executes make -j, default is true
+
 
     Example:
 
-      include(Utility/CMakeUtilityFunctions.cmake)
-      include(Git/GitClone.cmake)
-      include(FetchQMakeContents/FetchQMakeContents.cmake)
+      include(CMakeCommon)
 
       Core_Utility_FetchQMakeContents(
         GIT_REPOSITORY https://github.com/SMR76/knight-pen.git
