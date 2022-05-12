@@ -12,12 +12,10 @@ Commands:
 Core_Utility_CloneRepository:
 
     Core_Utility_CloneRepository(
-      <GIT_REPOSITORY <string:url>>
-      [GIT_TAG <string:tag>]
-      [OUTPUT_DIRECTORY <string:output>]
-      [GIT_CLONE_DEPTH <int:depth>]
-      [RESET_ON_DIRTY_REPO <bool:reset>]
-      [UPDATE_SUBMODULES <bool:update>]
+      <GIT_REPOSITORY>
+      [GIT_TAG, OUTPUT_DIRECTORY, GIT_CLONE_DEPTH,
+       RESET_ON_DIRTY_REPO, UPDATE_SUBMODULES,
+       APPLY_PATCH]
     )
 
 The GIT_REPOSITORY argument is the only necessary one, which
@@ -26,27 +24,30 @@ On the second call with the same OUTPUT_DIRECTORY the exact
 behavior is defined by RESET_ON_DIRTY_REPO, but it will
 execute a git-pull on that repository anyway.
 
-- GIT_REPOSITORY <string:url>
+- GIT_REPOSITORY
   Repository url to clone.
 
-- GIT_TAG <string:tag>
+- GIT_TAG
   The repository tag, branch, hash to clone. Default is empty.
 
-- OUTPUT_DIRECTORY <string:output>
+- OUTPUT_DIRECTORY
   Directory in which to clone the repository, default is
   the CMAKE_BINARY_DIR/<REPO_NAME>.
 
-- GIT_CLONE_DEPTH <int:depth>
+- GIT_CLONE_DEPTH
   Sepcifies the git-clone depth, default is 1.
 
-- RESET_ON_DIRTY_REPO <bool:reset>
+- RESET_ON_DIRTY_REPO
   Executes a git reset --hard on the repository if
   Core_Utility_CloneRepository called more than one time
   with the same GIT_REPOSITORY and OUTPUT_DIRECTORY.
 
-- UPDATE_SUBMODULES <bool:reset>
+- UPDATE_SUBMODULES
   Performs a git submodule udpate --init --recursive on the
   repository. [NOT IMPLEMENTED YET]
+
+- APPLY_PATCH
+  Uses git-apply to applying a patch file.
 
 Example:
 

@@ -17,6 +17,8 @@ function(Core_Utility_FetchQMakeContents)
 
     RUN_INSTALL_RULE
     RUN_BUILD_RULE
+
+    APPLY_PATCH
   )
   set(multi_value_arguments)
   cmake_parse_arguments(FQC
@@ -65,6 +67,7 @@ function(Core_Utility_FetchQMakeContents)
     OUTPUT_DIRECTORY ${FQC_SOURCE_DIRECTORY}
     RESET_ON_DIRTY_REPO on
     UPDATE_SUBMODULES on
+    APPLY_PATCH ${FQC_APPLY_PATCH}
   )
 
   if(FQC_QMAKE_CONFIG_DIRECTORY)

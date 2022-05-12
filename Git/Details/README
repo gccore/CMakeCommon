@@ -84,3 +84,21 @@ binary git binary file.
 - reset_level
   An accepable reset level for git-reset command.
 
+---------------------------------------------------------
+
+Core_Details_Git_Apply:
+
+    Core_Details_Git_Apply(binary output patch_file)
+
+Applying a patch file refered by patch_file in output
+directory using binary file.
+
+- binary
+  Absolute path to the git binary file. Usually
+  provided by FindGit and GIT_EXECUTABLE variable.
+
+- output
+  The repository directory
+
+- patch_file
+  A vaild acceptable patch file by git-apply

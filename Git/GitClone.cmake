@@ -10,6 +10,7 @@ function(Core_Utility_CloneRepository)
     GIT_TAG
     OUTPUT_DIRECTORY
     GIT_CLONE_DEPTH
+    APPLY_PATCH
   )
   set(multi_value_arguments)
   cmake_parse_arguments(CP
@@ -72,5 +73,13 @@ function(Core_Utility_CloneRepository)
         ${CP_OUTPUT_DIRECTORY}
       )
     endif()
+  endif()
+
+  if(CP_APPLY_PATCH)
+    Core_Details_Git_Apply(
+      ${GIT_EXECUTABLE}
+      ${CP_OUTPUT_DIRECTORY}
+      ${CP_APPLY_PATCH}
+    )
   endif()
 endfunction()
