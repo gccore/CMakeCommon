@@ -3,9 +3,9 @@ function(Core_Details_FetchQMakeContents_ConfigureQMake input args output)
 
   set(command1)
   if(args)
-    set(command1 ${qmake_binary} -project  ${input})
-  else()
     set(command1 ${qmake_binary} -project ${args} ${input})
+  else()
+    set(command1 ${qmake_binary} -project ${input})
   endif()
 
   execute_process(
@@ -19,9 +19,9 @@ function(Core_Details_FetchQMakeContents_ConfigureQMake input args output)
 
   set(command2)
   if(args)
-    set(command2 ${qmake_binary} -makefile ${input})
-  else()
     set(command2 ${qmake_binary} -makefile ${args} ${input})
+  else()
+    set(command2 ${qmake_binary} -makefile ${input})
   endif()
 
   execute_process(
