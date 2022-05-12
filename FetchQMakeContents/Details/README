@@ -1,0 +1,48 @@
+FetchQMakeContents Implementations
+------------------------
+
+Overview:
+This file conatins some utility functions for removeing the
+code duplications from the higher-level APIs.
+
+Commands:
+
+Core_Details_FetchQMakeContents_ConfigureQMake:
+
+    Core_Details_FetchQMakeContents_ConfigureQMake(input args output)
+
+Executes qmake -project and qmake -makefile on the input.
+
+- input
+  The QMake project root.
+  
+- args
+  Additional QMake arguments.
+
+- output
+  The build directory, for preventing from redundant
+  files creation.
+
+
+---------------------------------------------------------
+
+Core_Details_FetchQMakeContents_BuildQMake:
+
+    Core_Details_FetchQMakeContents_BuildQMake(build_dir)
+
+Executes make -j on build_dir
+
+- build_dir
+  Path to a QMake ready to build project.
+  
+---------------------------------------------------------
+
+Core_Details_FetchQMakeContents_InstallQMake:
+
+    Core_Details_FetchQMakeContents_InstallQMake(build_dir)
+
+Executes make install on build_dir
+
+- build_dir
+  The repository build directory.
+

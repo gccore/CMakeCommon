@@ -52,6 +52,7 @@ function(Core_Utility_CloneRepository)
       ${CP_GIT_TAG}
       ${CP_GIT_CLONE_DEPTH}
       ${CP_OUTPUT_DIRECTORY}
+      ${CP_UPDATE_SUBMODULES}
     )
   else()
     if(${CP_RESET_ON_DIRTY_REPO})
@@ -65,5 +66,11 @@ function(Core_Utility_CloneRepository)
       ${GIT_EXECUTABLE}
       ${CP_OUTPUT_DIRECTORY}
     )
+    if(${CP_UPDATE_SUBMODULES})
+      Core_Details_Git_Update_Submodules(
+        ${GIT_EXECUTABLE}
+        ${CP_OUTPUT_DIRECTORY}
+      )
+    endif()
   endif()
 endfunction()

@@ -9,7 +9,7 @@ Commands:
 
 Core_Details_Git_Clone:
 
-    Core_Details_Git_Clone(binary repo tag depth output)
+    Core_Details_Git_Clone(binary repo tag depth output update_submodule)
 
 Uses git with provided binary path to clones repo
 at tag by depth of depth in output directory.
@@ -30,6 +30,9 @@ at tag by depth of depth in output directory.
 - output
   Directory in which to clone the repository.
 
+- update_submodule
+  If enable, --recurse-submodules will be added to git-clone.
+
 ---------------------------------------------------------
 
 Core_Details_Git_Pull:
@@ -45,6 +48,22 @@ on output.
   
 - output
   Directory to execute the pull command on it.
+
+---------------------------------------------------------
+
+Core_Details_Git_Update_Submodules:
+
+    Core_Details_Git_Update_Submodules(binary output)
+
+Updates all the submodules recursivly using binary path
+for git in output directory
+
+- binary
+  Absolute path to the binary file. Usually
+  provided by FindGit and GIT_EXECUTABLE variable.
+
+- output
+  The git repository.
 
 ---------------------------------------------------------
 

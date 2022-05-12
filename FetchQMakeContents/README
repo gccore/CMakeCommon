@@ -1,0 +1,68 @@
+FetchQMakeContents
+-------
+
+Overview:
+Using this module you can clone/build QMake projects at
+the CMake Configuration time.
+
+Files: FetchQMakeContents.cmake
+
+  Commands:
+
+    Core_Utility_FethQMakeContent(
+      <GIT_REPOSITORY>
+      [GIT_TAG, QMAKE_ARGUMENTS,
+       OUTPUT_PREFIX, OUTPUT_BUILD_DIRECTORY,
+       OUTPUT_SOURCE_DIRECTORY, OUTPUT_INSTALL_DIRECTORY,
+       QMAKE_CONFIG_DIRECTORY]
+    )
+
+    Takes a GIT repository, clones and build it.
+
+    Opetions:
+
+      - GIT_REPOSITORY:
+        A git url to the QMake repository.
+          * Directly will be pass to the Core_Utility_CloneRepository
+
+      - GIT_TAG:
+        Could be tag, branch, commit hash for cloning.
+          * Directly will be pass to the Core_Utility_CloneRepository
+
+      - QMAKE_ARGUMENTS:
+        Additional command line parameter for QMake binary. Default
+        is empty
+
+      - OUTPUT_PREFIX:
+        A name which the directories prefixed with this variable.
+        Default value is the repository name.
+
+      - OUTPUT_BUILD_DIRECTORY:
+        Specifies the build directory path. Default is
+        CMAKE_BINARY_DIR/OUTPUT_PREFIX/build
+
+      - OUTPUT_SOURCE_DIRECTORY:
+        The repository source codes directory. Default is
+        CMAKE_BINARY_DIR/OUTPUT_PREFIX/source
+
+      - OUTPUT_INSTALL_DIRECTORY:
+          * NOT IMPLEMENTED
+        Default is CMAKE_BINARY_DIR/OUTPUT_PREFIX/install
+
+      - QMAKE_CONFIG_DIRECOTYR:
+        A suffix for the OUTPUT_SOURCE_DIRECTORY to indicate
+        the repository QMake directory path relative to
+        the reposiotry sources.
+
+
+    Example:
+
+      include(Utility/CMakeUtilityFunctions.cmake)
+      include(Git/GitClone.cmake)
+      include(FetchQMakeContents/FetchQMakeContents.cmake)
+
+      Core_Utility_FetchQMakeContents(
+        GIT_REPOSITORY https://github.com/SMR76/knight-pen.git
+        QMAKE_CONFIG_DIRECTORY src/knight-pen
+      )
+
