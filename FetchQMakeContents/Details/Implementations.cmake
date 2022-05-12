@@ -39,7 +39,7 @@ function(Core_Details_FetchQMakeContents_BuildQMake build_dir)
 
   execute_process(
     COMMAND
-      ${make_binary} -C ${build_dir} -j
+      ${make_binary} -C ${build_dir}
     WORKING_DIRECTORY
       ${build_dir}
     COMMAND_ERROR_IS_FATAL
