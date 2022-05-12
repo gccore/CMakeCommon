@@ -28,7 +28,8 @@ function(Core_Utility_CloneRepository)
       "The default path(${CMAKE_BINARY_DIR}/<YOUR_REPO_NAME>) "
       "will be used since no path was specified with: OUTPUT_DIRECTORY"
     )
-    set(CP_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+    Core_Utility_GetRepoName(${CP_GIT_REPOSITORY} repository_name)
+    set(CP_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${repository_name})
   endif()
 
   if(NOT CP_GIT_CLONE_DEPTH)
