@@ -1,0 +1,22 @@
+Utility
+-------
+
+Overview:
+This module contains some useful utility functions.
+
+Files: CMakeUtilityFunctions.cmake
+
+  Commands:
+
+    Core_Utility_GetRepoName(url repo_name)
+
+    Take a url ended with .git and returns the repository
+    name in repo_name using a regex.
+
+    Example:
+
+      include(Utility)
+      set(url "https://github.com/x/y.git")
+      Core_Utility_GetRepoName(url repo_name)
+      message(STATUS ${repo_name}) # y
+
